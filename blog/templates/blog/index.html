@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pl-PL">
+<head>
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'blog/style.css' %}">
+</head>
+<body>
+<center><a id="logo" href="{% url 'index'%}">Zielona Herbata - Blog Popkulturowy</a></center>
+{% if newest_posts %}
+	<ul>
+	{% for post in newest_posts %}
+		<h2><a href="{% url 'detail' post.id %}">{{ post.title }}</a></h2>
+		{{post.description}}
+		<hr>
+	{% endfor %}
+	</ul>
+{% else %}
+	<p>Brak postów </p>
+{% endif %}
+
+</body>
+</html>

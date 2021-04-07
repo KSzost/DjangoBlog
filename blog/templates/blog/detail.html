@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pl-PL">
+<head>
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'blog/style.css' %}">
+</head>
+<body>
+<center><a id="logo" href="{% url 'index'%}">Zielona Herbata - Blog Popkulturowy</a></center>
+<h1> {{ post.title }} </h1>
+<p> {{ post.content }} </p>
+<h4>Autor: {{ post.author }} </h4>
+<button><a class="btn btn-default" href="{% url 'comments' post.id %}">Dodaj Komentarz</a></button>
+<br>
+<hr>
+{% for comment in post.comments.all %}
+    <div>
+        <p><strong>{{ comment.author }}</strong> {{ comment.date }} :
+        <br>{{ comment.text }}</p>
+    </div>
+{% empty %}
+    <p>Brak komentarzy</p>
+{% endfor %}
+
+</body>
+</html>

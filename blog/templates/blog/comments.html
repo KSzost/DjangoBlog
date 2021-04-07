@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="pl-PL">
+<head>
+{% load static %}
+</head>
+<link rel="stylesheet" type="text/css" href="{% static 'blog/style.css' %}">
+<body>
+<a id="logo" href="{% url 'index'%}">Zielona Herbata - Blog Popkulturowy</a>
+ <h1>New comment</h1>
+    <form method="POST" class="post-form">{% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="save btn btn-default">Send</button>
+    </form>
+
+</body>
+</html>
